@@ -5,6 +5,7 @@ using Toybox.BluetoothLowEnergy as Ble;
 class BleHandler extends Ble.BleDelegate {
     var temperature = null;
     var humidity = null;
+    var updateMoment = null;
 
     function initialize() {
         BleDelegate.initialize();
@@ -42,6 +43,7 @@ class BleHandler extends Ble.BleDelegate {
                 tempRaw *= -1;  // negative
             }
             temperature = tempRaw;
+            updateMoment = Time.now();
 
             // System.println("Temperatur: " + tempRaw + " °C");
             // System.println("Feuchtigkeit: " + humidity + "%");

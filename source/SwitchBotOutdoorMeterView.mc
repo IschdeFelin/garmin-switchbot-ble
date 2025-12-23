@@ -33,6 +33,8 @@ class SwitchBotOutdoorMeterView extends WatchUi.SimpleDataField {
     const AVERAGE_TEMPERATURE_FIELD_ID = 6;
     const AVERAGE_HUMIDIRY_FIELD_ID = 7;
 
+    const SENSOR_TIMEOUT = 60; // 60 seconds
+
     // Set the label of the data field here.
     function initialize() {
         SimpleDataField.initialize();
@@ -123,6 +125,12 @@ class SwitchBotOutdoorMeterView extends WatchUi.SimpleDataField {
     // guarantee that compute() will be called before onUpdate().
     function compute(info as Activity.Info) as Numeric or Duration or String or Null {
         // See Activity.Info in the documentation for available information.
+        if (bleData.updateMoment == null || (Time.now().value() - bleData.updateMoment.value()) >= SENSOR_TIMEOUT) {
+            System.println("No recent data from sensor.");
+            return "--.-";
+        }
+
+        // ---------- TEMPERATURE ----------
         if (bleData.temperature != null) {
             temperatureField.setData(bleData.temperature);
 
@@ -142,6 +150,7 @@ class SwitchBotOutdoorMeterView extends WatchUi.SimpleDataField {
             averageTemperatureField.setData(Math.round(sum_temperature / count_temperature * 10) / 10.0);
         }
 
+        // ---------- HUMIDITY ----------
         if (bleData.humidity != null) {
             humidityField.setData(bleData.humidity);
 
@@ -161,11 +170,7 @@ class SwitchBotOutdoorMeterView extends WatchUi.SimpleDataField {
             averageHumidityField.setData(Math.round(sum_humidity / count_humidity));
         }
 
-        if (bleData.temperature == null) {
-            return "--.-";
-        } else {
-            return bleData.temperature.format("%.1f");
-        }
+        return bleData.temperature.format("%.1f");
     }
 
     function bind(data) as Void {
