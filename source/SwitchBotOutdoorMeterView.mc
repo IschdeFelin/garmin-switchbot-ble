@@ -45,7 +45,7 @@ class SwitchBotOutdoorMeterView extends WatchUi.SimpleDataField {
             MIN_TEMPERATURE_FIELD_ID,
             FitContributor.DATA_TYPE_FLOAT,
             {
-                :mesgType=>FitContributor.MESG_TYPE_RECORD,
+                :mesgType=>FitContributor.MESG_TYPE_SESSION,
                 :units=>"C",
                 :nativeNum=>13,
             }
@@ -55,7 +55,7 @@ class SwitchBotOutdoorMeterView extends WatchUi.SimpleDataField {
             MAX_TEMPERATURE_FIELD_ID,
             FitContributor.DATA_TYPE_FLOAT,
             {
-                :mesgType=>FitContributor.MESG_TYPE_RECORD,
+                :mesgType=>FitContributor.MESG_TYPE_SESSION,
                 :units=>"C",
                 :nativeNum=>13,
             }
@@ -75,7 +75,7 @@ class SwitchBotOutdoorMeterView extends WatchUi.SimpleDataField {
             MIN_HUMIDIRY_FIELD_ID,
             FitContributor.DATA_TYPE_UINT8,
             {
-                :mesgType=>FitContributor.MESG_TYPE_RECORD,
+                :mesgType=>FitContributor.MESG_TYPE_SESSION,
                 :units=>"%",
             }
         );
@@ -84,7 +84,7 @@ class SwitchBotOutdoorMeterView extends WatchUi.SimpleDataField {
             MAX_HUMIDIRY_FIELD_ID,
             FitContributor.DATA_TYPE_UINT8,
             {
-                :mesgType=>FitContributor.MESG_TYPE_RECORD,
+                :mesgType=>FitContributor.MESG_TYPE_SESSION,
                 :units=>"%",
             }
         );

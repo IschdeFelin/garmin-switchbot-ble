@@ -2,7 +2,7 @@
 	<fitField id="0"
 		displayInChart="true"
 		sortOrder = "0"
-		precision="2"
+		precision="1"
 		chartTitle="@Strings.temperature"
 		dataLabel="@Strings.temperature"
 		unitLabel="@Strings.celsius"
@@ -10,10 +10,38 @@
 	
 	<fitField id="1"
 		displayInChart="true"
-		sortOrder = "1"
+		sortOrder = "4"
 		precision="0"
 		chartTitle="@Strings.humidity"
 		dataLabel="@Strings.humidity"
 		unitLabel="@Strings.percent"
 		fillColor="#7FB3D5" />
+
+	<fitField id="2"
+		displayInActivitySummary="true"
+		sortOrder = "2"
+		precision="1"
+		dataLabel="@Strings.temperature_min"
+		unitLabel="@Strings.celsius" />
+
+	<fitField id="3"
+		displayInActivitySummary="true"
+		sortOrder = "3"
+		precision="1"
+		dataLabel="@Strings.temperature_max"
+		unitLabel="@Strings.celsius" />
+
+	<fitField id="4"
+		displayInActivitySummary="true"
+		sortOrder = "6"
+		precision="0"
+		dataLabel="@Strings.humidity_min"
+		unitLabel="@Strings.percent" />
+
+	<fitField id="5"
+		displayInActivitySummary="true"
+		sortOrder = "7"
+		precision="0"
+		dataLabel="@Strings.humidity_max"
+		unitLabel="@Strings.percent" />
 </fitContributions>
