@@ -2,9 +2,11 @@
     <string id="temperature">Temperatur</string>
     <string id="temperature_min">Minimale Temperatur</string>
     <string id="temperature_max">Maximale Temperatur</string>
+    <string id="temperature_average">Ø Temperatur</string>
     <string id="humidity">Luftfeuchtigkeit</string>
     <string id="humidity_min">Minimale Luftfeuchtigkeit</string>
     <string id="humidity_max">Maximale Luftfeuchtigkeit</string>
+    <string id="humidity_average">Ø Luftfeuchtigkeit</string>
     <string id="macAddress">Sensor MAC Addresse</string>
     <string id="macAddressPrompt">MAC Addresse zum Filtern. Format aa:bb:cc:dd:ee:ff"</string>
 </strings>

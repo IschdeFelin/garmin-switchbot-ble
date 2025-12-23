@@ -3,9 +3,11 @@
     <string id="temperature">Temperature</string>
     <string id="temperature_min">Min Temperature</string>
     <string id="temperature_max">Max Temperature</string>
+    <string id="temperature_average">Average Temperature</string>
     <string id="humidity">Humidity</string>
     <string id="humidity_min">Min Humidity</string>
     <string id="humidity_max">Max Humidity</string>
+    <string id="humidity_average">Average Humidity</string>
     <string id="celsius" translatable="false">°C</string>
     <string id="percent" translatable="false">%</string>
     <string id="macAddress">Sensor MAC Address</string>

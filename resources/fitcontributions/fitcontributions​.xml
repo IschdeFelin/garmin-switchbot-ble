@@ -44,4 +44,18 @@
 		precision="0"
 		dataLabel="@Strings.humidity_max"
 		unitLabel="@Strings.percent" />
+
+	<fitField id="6"
+		displayInActivitySummary="true"
+		sortOrder = "1"
+		precision="1"
+		dataLabel="@Strings.temperature_average"
+		unitLabel="@Strings.celsius" />
+
+	<fitField id="7"
+		displayInActivitySummary="true"
+		sortOrder = "5"
+		precision="0"
+		dataLabel="@Strings.humidity_average"
+		unitLabel="@Strings.percent" />
 </fitContributions>

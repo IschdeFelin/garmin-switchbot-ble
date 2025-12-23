@@ -10,6 +10,10 @@ class SwitchBotOutdoorMeterView extends WatchUi.SimpleDataField {
     var max_temperature = null;
     var min_humidity = null;
     var max_humidity = null;
+    var sum_temperature as Double = 0.0d;
+    var count_temperature = 0;
+    var sum_humidity as Long = 0l;
+    var count_humidity = 0;
 
     var temperatureField = null;
     var humidityField = null;
@@ -17,6 +21,8 @@ class SwitchBotOutdoorMeterView extends WatchUi.SimpleDataField {
     var maxTemperatureField = null;
     var minHumidityField = null;
     var maxHumidityField = null;
+    var averageTemperatureField = null;
+    var averageHumidityField = null;
 
     const TEMPERATURE_FIELD_ID = 0;
     const HUMIDIRY_FIELD_ID = 1;
@@ -24,6 +30,8 @@ class SwitchBotOutdoorMeterView extends WatchUi.SimpleDataField {
     const MAX_TEMPERATURE_FIELD_ID = 3;
     const MIN_HUMIDIRY_FIELD_ID = 4;
     const MAX_HUMIDIRY_FIELD_ID = 5;
+    const AVERAGE_TEMPERATURE_FIELD_ID = 6;
+    const AVERAGE_HUMIDIRY_FIELD_ID = 7;
 
     // Set the label of the data field here.
     function initialize() {
@@ -60,6 +68,16 @@ class SwitchBotOutdoorMeterView extends WatchUi.SimpleDataField {
                 :nativeNum=>13,
             }
         );
+        averageTemperatureField = createField(
+            "average_temperature",
+            AVERAGE_TEMPERATURE_FIELD_ID,
+            FitContributor.DATA_TYPE_FLOAT,
+            {
+                :mesgType=>FitContributor.MESG_TYPE_SESSION,
+                :units=>"C",
+                :nativeNum=>13,
+            }
+        );
 
         humidityField = createField(
             "humidity",
@@ -88,6 +106,15 @@ class SwitchBotOutdoorMeterView extends WatchUi.SimpleDataField {
                 :units=>"%",
             }
         );
+        averageHumidityField = createField(
+            "average_humidity",
+            AVERAGE_HUMIDIRY_FIELD_ID,
+            FitContributor.DATA_TYPE_UINT8,
+            {
+                :mesgType=>FitContributor.MESG_TYPE_SESSION,
+                :units=>"%",
+            }
+        );
     }
 
     // The given info object contains all the current workout
@@ -98,6 +125,8 @@ class SwitchBotOutdoorMeterView extends WatchUi.SimpleDataField {
         // See Activity.Info in the documentation for available information.
         if (bleData.temperature != null) {
             temperatureField.setData(bleData.temperature);
+
+            // min / max temperature
             if (min_temperature == null || bleData.temperature < min_temperature) {
                 min_temperature = bleData.temperature;
                 minTemperatureField.setData(min_temperature);
@@ -106,10 +135,17 @@ class SwitchBotOutdoorMeterView extends WatchUi.SimpleDataField {
                 max_temperature = bleData.temperature;
                 maxTemperatureField.setData(max_temperature);
             }
+
+            // average temperature
+            sum_temperature += bleData.temperature;
+            count_temperature += 1;
+            averageTemperatureField.setData(Math.round(sum_temperature / count_temperature * 10) / 10.0);
         }
 
         if (bleData.humidity != null) {
             humidityField.setData(bleData.humidity);
+
+            // min / max humidity
             if (min_humidity == null || bleData.humidity < min_humidity) {
                 min_humidity = bleData.humidity;
                 minHumidityField.setData(min_humidity);
@@ -118,6 +154,11 @@ class SwitchBotOutdoorMeterView extends WatchUi.SimpleDataField {
                 max_humidity = bleData.humidity;
                 maxHumidityField.setData(max_humidity);
             }
+
+            // average humidity
+            sum_humidity += bleData.humidity;
+            count_humidity += 1;
+            averageHumidityField.setData(Math.round(sum_humidity / count_humidity));
         }
 
         if (bleData.temperature == null) {
