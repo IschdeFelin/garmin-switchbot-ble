@@ -12,4 +12,7 @@
     <string id="percent" translatable="false">%</string>
     <string id="macAddress">Sensor MAC Address</string>
     <string id="macAddressPrompt">MAC address to filter. Format aa:bb:cc:dd:ee:ff"</string>
+    <string id="showBoth">Show Temperature and Humidity</string>
+    <string id="showBothPrompt">If enabled, both temperature and humidity will be shown in the main data field (separated by a slash).</string>
+    <string id="environment">Environment</string>
 </strings>

@@ -9,4 +9,7 @@
     <string id="humidity_average">Ø Luftfeuchtigkeit</string>
     <string id="macAddress">Sensor MAC Addresse</string>
     <string id="macAddressPrompt">MAC Addresse zum Filtern. Format aa:bb:cc:dd:ee:ff"</string>
+    <string id="showBoth">Temperatur und Luftfeuchtigkeit anzeigen</string>
+    <string id="showBothPrompt">Wenn aktiviert, werden sowohl Temperatur als auch Luftfeuchtigkeit im Hauptdatenfeld angezeigt (durch einen Schrägstrich getrennt).</string>
+    <string id="environment">Umgebung</string>
 </strings>

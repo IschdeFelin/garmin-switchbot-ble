@@ -38,7 +38,11 @@ class SwitchBotOutdoorMeterView extends WatchUi.SimpleDataField {
     // Set the label of the data field here.
     function initialize() {
         SimpleDataField.initialize();
-        label = loadResource(Rez.Strings.temperature) + " " + loadResource(Rez.Strings.celsius);
+        if (Application.Properties.getValue("showBoth") as Lang.Boolean) {
+            label = loadResource(Rez.Strings.environment);
+        } else {
+            label = loadResource(Rez.Strings.temperature) + " " + loadResource(Rez.Strings.celsius);
+        }
 
         temperatureField = createField(
             "temperature",
@@ -170,6 +174,9 @@ class SwitchBotOutdoorMeterView extends WatchUi.SimpleDataField {
             averageHumidityField.setData(Math.round(sum_humidity / count_humidity));
         }
 
+        if (Application.Properties.getValue("showBoth") as Lang.Boolean) {
+            return bleData.temperature.format("%.1f") + "°C / " + bleData.humidity + "%";
+        }
         return bleData.temperature.format("%.1f");
     }
 
